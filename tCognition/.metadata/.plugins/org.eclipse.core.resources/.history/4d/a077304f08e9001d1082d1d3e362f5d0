@@ -1,0 +1,91 @@
+package com.tCognition;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Demo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(add("1,2,3,\n4,5"));
+	    }
+	
+	/*1. A StringCalculator with a method Add(string numbers) that returns an integer.*/
+	
+	
+	
+	    public static int add(String numbers) {
+	    	String[] strArr=numbers.split("");
+	        if (numbers.isEmpty()) {
+	            return 0;
+	        } else {
+	            String delimiter = ",";
+	            if (numbers.startsWith("//")) {
+	                int delimiterIndex = numbers.indexOf("\n");
+	                delimiter = numbers.substring(2, delimiterIndex);
+	                numbers = numbers.substring(delimiterIndex + 1);
+	                
+	            }
+	            
+	            numbers = numbers.replaceAll("\n", delimiter);
+	            
+	            System.out.println("delimiter is: "+delimiter);
+                System.out.println("numbers are: "+numbers);
+	            
+	            String[] tokens = numbers.split(delimiter);
+	            int sum = 0;
+	            List<Integer> negatives = new ArrayList<>();
+	            for (String token : tokens) {
+	            	if(token.equals(""))
+	            	{
+	            		sum=sum+0;
+	            	}
+	            	else {
+	            		int value = Integer.parseInt(token);
+	            		if (value < 0) 
+	            		{
+	            			negatives.add(value);
+	            		} 
+	            		else if (value <= 1000) 
+	            		{
+	            			sum += value;
+	            		}
+	            	}
+	            }
+	            if (!negatives.isEmpty()) {
+	                String message = "Negatives not allowed: ";
+	                for (int i = 0; i < negatives.size(); i++) {
+	                    if (i > 0) {
+	                        message += ",";
+	                    }
+	                    message += negatives.get(i);
+	                }
+	                throw new IllegalArgumentException(message);
+	            }
+	            return sum;
+	        }
+	    }
+	
+
+	    
+	
+
+	    
+	    /*2.Add method to handle an unknown number of numbers/*
+	    
+	    /*3.Allow the Add method to handle new lines between numbers (as well as commas):/*
+	    	
+	    /*4.	Allow the Add method to handle a different delimiter:/*
+	    	
+	    /*5.	Calling Add with a negative number will throw an exception "Negatives not allowed: " 
+	    	and then listing all negative numbers that were in the list of numbers./*
+	    	
+	    /*6.	Numbers greater than 1000 should be ignored./*
+	    	
+	    /*7.	Delimiters can be any length, using this syntax: "//[|||]\n1|||2|||3" returns 6./*
+	    /*8.	Allow multiple delimiters, using this syntax: "//[|][%]\n1|2%3" returns 6./*
+	    /*9.	Handle multiple delimiters of any length.*/
+
+
+
+}

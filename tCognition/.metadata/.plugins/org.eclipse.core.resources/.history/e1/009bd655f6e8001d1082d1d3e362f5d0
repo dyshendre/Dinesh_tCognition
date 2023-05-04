@@ -1,0 +1,15 @@
+package com.tCognition;
+
+public class Practice {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] str="//[|||][]%^\n1|||2|||3".split("") ;
+		for(String s:str)
+		{
+			if(s.equals("["))
+			System.out.print(s);
+		}
+	}
+
+}

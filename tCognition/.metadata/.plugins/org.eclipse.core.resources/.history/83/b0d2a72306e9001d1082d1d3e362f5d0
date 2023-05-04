@@ -1,0 +1,43 @@
+package com.tCognition;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Practice {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String strArr0="//[|||][%^&]\n1|||2%^&3";
+		
+		String[] strArr=strArr0.split("") ;
+		String num=strArr0.substring(2);
+		System.out.println(num);
+		
+		int numStart=0;
+		numStart=strArr0.indexOf("\n");
+		System.out.println(numStart);
+		List<Integer> list=new ArrayList<>();
+		for(int i=0;i<strArr.length;i++)
+		{
+			if(strArr[i].equals("[") || strArr[i].equals("]"))
+			{
+				list.add(i);
+			}
+			
+		}
+		System.out.println(list);
+		List<String> list2=new ArrayList<>();
+
+		for(int i=0;i<list.size();i=i+2)
+		{
+			list2.add(strArr0.substring(list.get(i)+1,list.get(i+1)));
+		}
+		int j=0;
+		for(String delimiter:list2)
+		{
+			num=num.replace(delimiter,",");
+		}
+		System.out.println(num);
+	}
+
+}
